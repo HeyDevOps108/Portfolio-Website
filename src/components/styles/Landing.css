@@ -5,6 +5,27 @@
   position: relative;
   height: var(--vh);
 }
+
+/* smooth rendering */
+.animate-landing {
+  will-change: transform, opacity;
+}
+
+.rocket {
+  display: inline-block;
+  margin: 0 4px;
+  animation: rocketFloat 2s ease-in-out infinite;
+}
+
+@keyframes rocketFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
 .landing-container {
   width: var(--cWidth);
   margin: auto;
@@ -12,6 +33,69 @@
   position: relative;
   max-width: var(--cMaxWidth);
 }
+
+/* 🔥 NEW CLEAN TEXT STYLE */
+
+.landing-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.landing-title .name {
+  color: var(--accentColor);
+  font-weight: 600;
+}
+
+/* 🔥 TITLE */
+.landing-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.landing-title .name {
+  color: var(--accentColor);
+  font-weight: 600;
+}
+
+/* 🔥 ROLE */
+.landing-role {
+  margin-top: 6px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #c481ff;
+  font-weight: 400;
+}
+
+/* 🔥 CLASSY DIVIDER */
+.landing-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #c481ff, transparent);
+  margin: 14px 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+/* 🔥 TAGLINE */
+.landing-tagline {
+  font-size: 14px;
+  line-height: 22px;
+  opacity: 0.7;
+  max-width: 300px;
+}
+
+.landing-role {
+  margin-top: 6px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #c481ff;
+  font-weight: 400;
+}
+
 .landing-circle1 {
   top: 0%;
   left: 0%;

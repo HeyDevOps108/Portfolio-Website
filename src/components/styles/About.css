@@ -1,71 +1,135 @@
 .about-section {
   display: flex;
   align-items: center;
-  justify-content: left;
-  place-items: center;
+  justify-content: flex-end;
   position: relative;
-  opacity: 1;
-  height: auto;
-  width: var(--cWidth);
-  margin: auto;
+  width: 100%;
+  min-height: 100vh;
+  padding-right: 8%;
+  z-index: 5;
 }
+
 .about-me {
-  padding: 50px 0px;
-  padding-bottom: 0;
-  width: 500px;
-  max-width: calc(100% - 15px);
+  width: 45%;
+  max-width: 480px;
+  position: relative;
+  z-index: 6;
+  font-family: "Inter", sans-serif;
 }
+
+/* 🔥 Heading */
 .about-me h3 {
-  font-size: 25px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 7px;
   font-weight: 400;
   color: var(--accentColor);
+  margin-bottom: 30px;
 }
 
+/* 🔥 Content text (smaller + clean) */
 .about-me p {
-  font-size: 33px;
-  font-weight: 600;
-  line-height: 36px;
-  letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.8rem;
+  letter-spacing: 0.2px;
+  margin-bottom: 14px;
+  word-break: keep-all;
+  opacity: 0.9;
 }
 
-@media only screen and (min-width: 600px) {
+/* 🔥 Purple highlight */
+.accent,
+.accent .char {
+  color: #b892ff !important;
+  font-weight: 500;
+}
+
+/* 🔥 Weapons title */
+.weapons-title {
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  opacity: 0.6;
+}
+
+/* 🔥 Weapons container */
+.weapons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 🔥 Weapons tags */
+.weapons span {
+  font-size: 0.75rem;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(184, 146, 255, 0.08);
+  color: #b892ff;
+  border: 1px solid rgba(184, 146, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* 🔥 Hover effect */
+.weapons span:hover {
+  background: rgba(184, 146, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(184, 146, 255, 0.4);
+}
+
+/* 🔥 Tagline */
+.tagline {
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* 🔥 Split text animation fix */
+.word {
+  display: inline;
+  white-space: nowrap;
+}
+
+.char {
+  display: inline-block;
+}
+
+/* 🔥 Tablet */
+@media only screen and (max-width: 1024px) {
   .about-section {
+    flex-direction: column;
     justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
   }
-}
-@media only screen and (min-width: 768px) {
+
   .about-me {
-    width: 500px;
-    max-width: calc(100% - 70px);
-    transform: translateY(0%);
+    width: 100%;
   }
-  .about-section {
-    opacity: 1;
+
+  .about-me p {
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+
+  .about-me h3 {
+    font-size: 14px;
   }
 }
-@media only screen and (min-width: 1025px) {
-  .about-section {
-    width: var(--cWidth);
-    justify-content: right;
-    max-width: 1920px;
-    height: var(--vh);
-    padding: 0px;
-    opacity: 1;
-  }
-  .about-me {
-    padding: 0px;
-    width: 50%;
-  }
+
+/* 🔥 Mobile */
+@media only screen and (max-width: 600px) {
   .about-me p {
-    font-size: 1.9vw;
-    line-height: 2.3vw;
+    font-size: 0.95rem;
+    line-height: 1.5rem;
   }
-}
-@media only screen and (min-width: 1950px) {
-  .about-me p {
-    font-size: 2.5rem;
-    line-height: 2.7rem;
+
+  .about-me h3 {
+    font-size: 13px;
   }
 }

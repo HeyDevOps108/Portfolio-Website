@@ -27,33 +27,39 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     return () => {
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [isDesktopView]);
+  }, []);
 
-  return (
-    <div className="container-main">
-      <Cursor />
-      <Navbar />
-      <SocialIcons />
-      {isDesktopView && children}
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <div className="container-main">
-            <Landing>{!isDesktopView && children}</Landing>
-            <About />
-            <WhatIDo />
-            <Career />
-            <Work />
-            {isDesktopView && (
-              <Suspense fallback={<div>Loading....</div>}>
-                <TechStack />
-              </Suspense>
-            )}
-            <Contact />
-          </div>
+return (
+  <>
+    <Cursor />
+    <Navbar />
+    <SocialIcons />
+
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <div className="container-main">
+          <Landing />
+
+          <About />
+          <WhatIDo />
+          <Career />
+          <Work />
+
+          {isDesktopView && (
+            <Suspense fallback={<div>Loading....</div>}>
+              <TechStack />
+            </Suspense>
+          )}
+
+          <Contact />
         </div>
       </div>
     </div>
-  );
+
+    {/* 3D Character */}
+    {isDesktopView && children}
+  </>
+);
 };
 
 export default MainContainer;

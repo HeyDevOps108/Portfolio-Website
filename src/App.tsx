@@ -8,15 +8,14 @@ import { LoadingProvider } from "./context/LoadingProvider";
 const App = () => {
   return (
     <>
-      <LoadingProvider>
-        <Suspense>
-          <MainContainer>
-            <Suspense>
-              <CharacterModel />
-            </Suspense>
-          </MainContainer>
-        </Suspense>
-      </LoadingProvider>
+<LoadingProvider>
+  <Suspense fallback={<div>Loading...</div>}>
+    <MainContainer />
+    <Suspense fallback={<div>Loading 3D...</div>}>
+      <CharacterModel />
+    </Suspense>
+  </Suspense>
+</LoadingProvider>
     </>
   );
 };
