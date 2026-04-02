@@ -5,11 +5,12 @@ const CharacterModel = () => {
     <div
       style={{
         position: "fixed",
-        left: 0,
+        left: "50%",
         top: 0,
-        width: "45%",
+        transform: "translateX(-50%)",
+        width: "100%",   // 🔥 IMPORTANT
         height: "100vh",
-        zIndex: 1,
+        zIndex: 10,
         pointerEvents: "none",
       }}
     >

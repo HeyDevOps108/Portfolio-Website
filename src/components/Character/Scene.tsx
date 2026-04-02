@@ -28,11 +28,11 @@ const Scene = () => {
       const scene = sceneRef.current;
 
       const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: false,
+        alpha: true,
+        antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+      renderer.setPixelRatio(window.devicePixelRatio);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -98,41 +98,33 @@ const Scene = () => {
         });
       };
 
-      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mousemove", (event) => {
+        onMouseMove(event);
+      });
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
-let lastTime = 0;
-
-const animate = () => {
-  requestAnimationFrame(animate);
-
-  const now = performance.now();
-  if (now - lastTime < 33) return; // ~30 FPS
-
-  lastTime = now;
-
-  if (headBone) {
-    handleHeadRotation(
-      headBone,
-      mouse.x,
-      mouse.y,
-      interpolation.x,
-      interpolation.y,
-      THREE.MathUtils.lerp
-    );
-    light.setPointLight(screenLight);
-  }
-
-  const delta = clock.getDelta();
-  if (mixer) {
-    mixer.update(delta);
-  }
-
-  renderer.render(scene, camera);
-};
+      const animate = () => {
+        requestAnimationFrame(animate);
+        if (headBone) {
+          handleHeadRotation(
+            headBone,
+            mouse.x,
+            mouse.y,
+            interpolation.x,
+            interpolation.y,
+            THREE.MathUtils.lerp
+          );
+          light.setPointLight(screenLight);
+        }
+        const delta = clock.getDelta();
+        if (mixer) {
+          mixer.update(delta);
+        }
+        renderer.render(scene, camera);
+      };
       animate();
       return () => {
         clearTimeout(debounce);
