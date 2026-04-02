@@ -7,44 +7,55 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
 
-          {/* 🔥 LEFT SIDE */}
-<div className="landing-intro">
-  <h1 className="landing-title">
-    Hi, I'm <span className="name">Vedant</span>
-  </h1>
+          {/* ── LEFT SIDE ── */}
+          <div className="landing-intro">
 
-  <h2 className="landing-role">
-    DevOps Astronaut
-  </h2>
+            {/* Greeting */}
+            <p className="landing-greeting">Hello, I'm</p>
 
-  {/* 🔥 classy divider */}
-  <div className="landing-divider"></div>
+            {/* Name */}
+            <h1 className="landing-title">
+              Vedant<span className="name-dot">.</span>
+            </h1>
 
-  <p className="landing-tagline">
-    Building systems that scale. <br />
-    Shipping infrastructure that doesn’t break.
-  </p>
-</div>
+            {/* Purple accent line */}
+            <div className="landing-divider"></div>
 
-          {/* 🔥 RIGHT SIDE (ANIMATION SAFE) */}
+            {/* Role */}
+            <p className="landing-role">
+              DevOps Astronaut <span className="rocket">🚀</span>
+            </p>
+
+            {/* Tagline */}
+            <p className="landing-tagline">
+              Building systems that scale.<br />
+              Shipping infra that never breaks.
+            </p>
+
+          </div>
+
+          {/* ── RIGHT SIDE ── */}
           <div className="landing-info">
-            <h3>I design &</h3>
 
+            {/* Small prefix label */}
+            <p className="landing-pre">I architect &amp;</p>
+
+            {/* Big stacked words */}
             <h2 className="landing-info-h2">
-              <div className="landing-h2-1">operate</div>
-              <div className="landing-h2-2">scale</div>
+              <div className="landing-h2-1">OPERATE</div>
+              <div className="landing-h2-2">SCALE</div>
             </h2>
 
-            <h2>
-              <div className="landing-h2-info">scale</div>
-              <div className="landing-h2-info-1">operate</div>
-            </h2>
+            {/* Tech stack tags */}
+            <p className="landing-stack">CI/CD · Kubernetes · Cloud</p>
+
           </div>
 
         </div>
 
-        {/* 🔥 IMPORTANT: THIS BRINGS BACK AVATAR */}
+        {/* ── AVATAR (do not remove) ── */}
         {children}
+
       </div>
     </>
   );
