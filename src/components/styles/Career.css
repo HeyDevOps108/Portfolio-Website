@@ -13,8 +13,8 @@
 }
 
 .career-section h2 {
-  font-size: 70px;
-  line-height: 70px;
+  font-size: 60px;
+  line-height: 62px;
   font-weight: 400;
   text-align: center;
   background: linear-gradient(0deg, #7f40ff, #ffffff);
@@ -38,40 +38,49 @@
 .career-info-box {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 }
 .career-info-box p {
   width: 40%;
-  font-size: 18px;
+  font-size: 14px;        /* was 18 */
+  line-height: 22px;      /* 🔥 improves readability */
   font-weight: 300;
-  margin: 0;
+  opacity: 0.85;
+
+  max-width: 420px;       /* 🔥 THIS FIXES TEXT SPREAD */
 }
 .career-info-in {
   display: flex;
   width: 40%;
-  justify-content: space-between;
   gap: 50px;
 }
-.career-info h3 {
+/* .career-info h3 {
   font-size: 48px;
   margin: 0;
   font-weight: 500;
   line-height: 45px;
-}
+} */
 
 .career-info h4 {
-  font-size: 33px;
-  line-height: 30px;
-  letter-spacing: 0.8px;
+  white-space: nowrap;
+  font-size: 24px;  /* slightly smaller to fit */
+  line-height: 28px;
+  letter-spacing: 0.6px;
   font-weight: 500;
   margin: 0;
 }
+
+@media (max-width: 1400px) {
+  .career-info h4 {
+    white-space: normal; /* allow break on smaller screens */
+  }
 .career-info h5 {
   font-weight: 400;
   letter-spacing: 0.7px;
-  font-size: 20px;
+  font-size: 16px;
   text-transform: capitalize;
   margin: 10px 0px;
+  opacity: 0.8;
   color: var(--accentColor);
 }
 .career-timeline {
@@ -144,7 +153,9 @@
     font-size: 17px;
   }
   .career-info h3 {
-    font-size: 40px;
+    font-size: 36px;   /* was 48 */
+    line-height: 38px;
+    opacity: 0.6;
   }
   .career-info-box p {
     font-size: 14px;
@@ -213,4 +224,51 @@
     place-items: inherit;
     justify-content: left;
   }
+}
+
+/* 🔥 Make text look premium */
+.career-info-box p {
+  letter-spacing: 0.3px;
+}
+
+/* 🔥 subtle glow on timeline text */
+.career-duration h3 {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+
+/* 🔥 LinkedIn-style duration (SAFE) */
+.career-duration {
+  margin-left: auto;
+}
+
+.career-duration h3 {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* 🔥 Reduce heavy year text */
+/* .career-info h3 {
+  font-size: 24px;
+  line-height: 28px;
+  opacity: 0.6;
+} */
+
+/* 🔥 Better readability */
+.career-info-box p {
+  font-size: 13.5px;
+  line-height: 21px;
+}
+
+/* 🔥 Clean role spacing */
+.career-role {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 }

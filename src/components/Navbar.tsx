@@ -52,9 +52,51 @@ useEffect(() => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          Logo
-        </a>
+<a href="/#" className="navbar-title logo-wrapper" data-cursor="disable">
+<svg
+  className="logo-svg"
+  viewBox="0 0 100 100"
+  width="36"
+  height="36"
+>
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#c481ff" />
+      <stop offset="100%" stopColor="#7c3aed" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  {/* 🔥 V SHAPE (clean + centered) */}
+  <line x1="25" y1="25" x2="50" y2="75" className="logo-line line-left" />
+  <line x1="75" y1="25" x2="50" y2="75" className="logo-line line-right" />
+
+  {/* 🔥 nodes */}
+  <circle cx="25" cy="25" r="3" className="logo-node node-1" />
+  <circle cx="75" cy="25" r="3" className="logo-node node-2" />
+  <circle cx="50" cy="75" r="4" className="logo-node main-node" filter="url(#glow)" />
+
+  {/* 🔥 subtle ring (optional but classy) */}
+  <circle
+    cx="50"
+    cy="50"
+    r="34"
+    stroke="url(#logoGradient)"
+    strokeWidth="1.2"
+    fill="none"
+    strokeDasharray="5 6"
+    className="logo-ring"
+    opacity="0.5"
+  />
+</svg>
+</a>
 
         <a
           href="mailto:example@mail.com"
@@ -89,5 +131,6 @@ useEffect(() => {
     </>
   );
 };
+
 
 export default Navbar;

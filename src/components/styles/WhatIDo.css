@@ -391,3 +391,25 @@
     line-height: 6.8rem;
   }
 }
+
+/* 🔥 Hide skill section completely when collapsed */
+.what-content:not(:hover):not(.what-content-active) h5,
+.what-content:not(:hover):not(.what-content-active) .what-content-flex {
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* 🔥 Show when expanded */
+.what-noTouch:hover h5,
+.what-content-active h5,
+.what-noTouch:hover .what-content-flex,
+.what-content-active .what-content-flex {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  margin-top: 8px;
+}

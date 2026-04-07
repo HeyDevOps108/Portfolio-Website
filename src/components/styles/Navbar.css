@@ -1,83 +1,309 @@
+/* ── HEADER (SLIM PIPE STYLE) ── */
 .header {
-  display: flex;
-  max-width: var(--cMaxWidth);
-  width: var(--cWidth);
-  justify-content: space-between;
-  padding: 20px 0px;
-  margin-bottom: -100px;
-  box-sizing: border-box;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
-  z-index: 9999;
+display: flex;
+max-width: var(--cMaxWidth);
+width: var(--cWidth);
+justify-content: space-between;
+align-items: center;
+
+position: fixed;
+left: 50%;
+transform: translateX(-50%);
+top: 10px;
+
+z-index: 9999;
+
+/* 🔥 SLIM HEIGHT */
+height: 48px;
+padding: 0 20px;
+
+/* 🔥 PIPE LOOK */
+background: rgba(10, 10, 20, 0.35);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+
+border-radius: 999px;
+border: 1px solid rgba(255, 255, 255, 0.06);
+
+transition: all 0.35s ease;
 }
+
+/* ── SCROLL STATE ── */
+.header.scrolled {
+height: 40px;
+padding: 0 16px;
+
+background: rgba(10, 10, 20, 0.6);
+backdrop-filter: blur(16px);
+
+box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* ── NAV LIST ── */
 .header ul {
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  column-gap: 40px;
-  row-gap: 8px;
-  align-items: end;
+display: flex;
+flex-direction: row;
+align-items: center;
+
+margin: 0;
+padding: 0;
+list-style: none;
+
+column-gap: 40px;
 }
+
+/* ── NAV ITEMS ── */
 .header ul li {
-  margin-left: 0px;
-  letter-spacing: 1px;
-  color: #ccc;
-  font-weight: 600;
-  cursor: pointer;
+font-size: 13px;
+letter-spacing: 1.5px;
+color: rgba(255, 255, 255, 0.75);
+font-weight: 600;
+cursor: pointer;
+
+position: relative;
+transition: all 0.25s ease;
 }
-.navbar-connect {
-  position: absolute;
-  display: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 15px;
-  letter-spacing: 1px;
-  font-weight: 500;
+
+/* 🔥 GLOW HOVER */
+.header ul li:hover {
+color: #ffffff;
+text-shadow:
+0 0 8px rgba(196,129,255,0.6),
+0 0 18px rgba(196,129,255,0.4);
 }
+
+/* 🔥 PREMIUM UNDERLINE */
+.header ul li::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: -5px;
+width: 0%;
+height: 2px;
+
+background: linear-gradient(90deg, #c481ff, #a855f7);
+border-radius: 2px;
+
+transition: width 0.3s ease;
+}
+
+.header ul li:hover::after {
+width: 100%;
+}
+
+/* ── LOGO ── */
 .navbar-title {
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.2px;
+font-weight: 700;
+font-size: 14px;
+
+background: linear-gradient(90deg, #ffffff, #c481ff);
+background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+-webkit-text-fill-color: transparent;
+
+transition: all 0.3s ease;
 }
-@media only screen and (min-width: 500px) {
-  .header {
-    padding: 20px 0px;
-  }
-  .header ul {
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-  }
-  .header ul li {
-    color: #eae5ec;
-  }
-  .navbar-title {
-    font-size: 16px;
-  }
+
+.navbar-title:hover {
+text-shadow: 0 0 20px rgba(196,129,255,0.6);
 }
+
+/* ── CENTER EMAIL ── */
+.navbar-connect {
+position: absolute;
+left: 50%;
+transform: translateX(-50%);
+font-size: 13px;
+letter-spacing: 1px;
+opacity: 0.8;
+color: #c481ff;
+
+display: none;
+}
+
+/* ── RESPONSIVE ── */
 @media only screen and (min-width: 900px) {
-  .navbar-connect {
-    display: block;
+.navbar-connect {
+display: block;
+}
+}
+
+
+/* ── BASE LOGO ── */
+.logo-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* ── LINES ── */
+.logo-line {
+stroke: url(#logoGradient);
+stroke-width: 2;
+stroke-linecap: round;
+fill: none;
+
+stroke-dasharray: 80;
+stroke-dashoffset: 80;
+
+filter: drop-shadow(0 0 6px rgba(196,129,255,0.5));
+
+animation: drawLine 1.2s ease forwards;
+}
+
+/* left line delay */
+.line-left {
+animation-delay: 0.1s;
+}
+
+/* right line delay */
+.line-right {
+animation-delay: 0.3s;
+}
+
+/* ── DRAW ANIMATION ── */
+@keyframes drawLine {
+to {
+  stroke-dashoffset: 0;
+}
+}
+
+/* ── NODES ── */
+.logo-node {
+fill: #c481ff;
+opacity: 0;
+
+filter: drop-shadow(0 0 8px rgba(196,129,255,0.7));
+
+animation: nodeAppear 0.6s ease forwards;
+}
+
+.node-1 { animation-delay: 0.8s; }
+.node-2 { animation-delay: 0.9s; }
+.main-node { 
+animation-delay: 1s;
+fill: #ffffff;
+filter: drop-shadow(0 0 12px rgba(255,255,255,0.9));
+}
+
+/* node appear */
+@keyframes nodeAppear {
+to {
+  opacity: 1;
+  transform: scale(1.1);
+}
+}
+/* 🔥 ROTATING RING */
+.logo-ring {
+  animation: rotateRing 10s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes rotateRing {
+  from {
+    transform: rotate(0deg);
+    transform-origin: center;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: center;
   }
 }
-@media only screen and (min-width: 1200px) {
-  .header {
-    padding: 35px 0px;
+
+/* 🔥 EXTRA LINE */
+.line-bottom {
+  animation-delay: 0.5s;
+}
+
+/* 🔥 EXTRA NODE */
+.node-3 {
+  animation-delay: 1s;
+}
+
+/* 🔥 CORE PULSE */
+.main-node {
+  animation: corePulse 2s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+  0% {
+    r: 4.5;
+    opacity: 1;
   }
-  .header ul {
-    column-gap: 80px;
-    font-size: 16px;
+  50% {
+    r: 6;
+    opacity: 0.7;
   }
-  .navbar-connect {
-    font-size: 16px;
+  100% {
+    r: 4.5;
+    opacity: 1;
   }
-  .navbar-title {
-    font-size: 18px;
+}
+
+/* 🔥 SHINE EFFECT (AUTO + HOVER BOOST) */
+.logo-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-wrapper::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(196, 129, 255, 0.18),
+    transparent
+  );
+  top: -10%;
+  left: -10%;
+  transform: translateX(-120%) rotate(25deg);
+
+  pointer-events: none;
+
+  /* 🔥 AUTO SHINE */
+  animation: shineLoop 4.5s ease-in-out infinite;
+}
+
+/* 🔥 HOVER BOOST (stronger + faster) */
+.logo-wrapper:hover::after {
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(196, 129, 255, 0.35),
+    transparent
+  );
+
+  animation: shineFast 1s ease;
+}
+
+/* 🔁 slow premium loop */
+@keyframes shineLoop {
+  0% {
+    transform: translateX(-120%) rotate(25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(120%) rotate(25deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ⚡ hover fast sweep */
+@keyframes shineFast {
+  from {
+    transform: translateX(-120%) rotate(25deg);
+  }
+  to {
+    transform: translateX(120%) rotate(25deg);
   }
 }
