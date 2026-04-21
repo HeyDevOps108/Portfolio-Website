@@ -45,9 +45,51 @@ const Loading = ({ percent }: { percent: number }) => {
   return (
     <>
       <div className="loading-header">
-        <a href="/#" className="loader-title" data-cursor="disable">
-          Logo
-        </a>
+<a href="/#" className="logo-wrapper" data-cursor="disable">
+  <svg
+    className="logo-svg"
+    width="34"
+    height="34"
+    viewBox="0 0 100 100"
+    fill="none"
+  >
+    <defs>
+      <linearGradient id="logoGradient" x1="0" y1="0" x2="100" y2="100">
+        <stop offset="0%" stopColor="#c481ff" />
+        <stop offset="100%" stopColor="#7c3aed" />
+      </linearGradient>
+    </defs>
+
+    {/* Cloud outline */}
+    <path
+      d="M30 60
+         C20 60, 20 45, 35 45
+         C40 30, 60 30, 65 45
+         C80 45, 80 60, 70 60
+         Z"
+      stroke="url(#logoGradient)"
+      strokeWidth="3"
+      fill="none"
+      className="logo-line"
+    />
+
+    {/* DevOps Infinity */}
+    <path
+      d="M35 60
+         C45 50, 55 50, 65 60
+         C55 70, 45 70, 35 60"
+      stroke="url(#logoGradient)"
+      strokeWidth="3"
+      fill="none"
+      className="logo-line"
+    />
+
+    {/* Nodes */}
+    <circle cx="35" cy="60" r="3" className="logo-node node-1" />
+    <circle cx="65" cy="60" r="3" className="logo-node node-2" />
+    <circle cx="50" cy="60" r="3.5" className="logo-node main-node" />
+  </svg>
+</a>
         <div className={`loaderGame ${clicked && "loader-out"}`}>
           <div className="loaderGame-container">
             <div className="loaderGame-in">
@@ -62,8 +104,8 @@ const Loading = ({ percent }: { percent: number }) => {
       <div className="loading-screen">
         <div className="loading-marquee">
           <Marquee>
-            <span> A Creative Developer</span> <span>A Creative Designer</span>
-            <span> A Creative Developer</span> <span>A Creative Designer</span>
+            <span> CLOUD • DEVOPS</span> <span>AUTOMATION</span>
+            <span> CLOUD • DEVOPS</span> <span>AUTOMATION</span>
           </Marquee>
         </div>
         <div
